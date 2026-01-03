@@ -1,6 +1,8 @@
 # Favicon Generator & Converter
 
-A privacy-focused, zero-backend tool for creating production-ready favicon packages. Whether you need to quickly convert an existing logo or design a new icon from scratch in a professional editor, FaviconGen handles it all purely in your browser.
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Click_Here-blue?style=for-the-badge)](https://favicongen.pro-grammer.de/)
+
+A privacy-focused, zero-backend tool for creating production-ready favicon packages. Whether you need to quickly convert an existing logo or design a new icon from scratch in a professional editor, FaviconGen handles it all purely in your browser. **[Try the Live Demo here](https://favicongen.pro-grammer.de/).**
 
 ![App Screenshot](https://github.com/AlexsdeG/FaviconGen/blob/main/FaviconGen.jpg)
 
