@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ultimate Favicon Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                500: '#6366f1', // Indigo for that modern feel
+                600: '#4f46e5',
+              },
+              glass: {
+                100: 'rgba(255, 255, 255, 0.1)',
+                200: 'rgba(255, 255, 255, 0.2)',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .glass-panel {
+          @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl;
+        }
+        .glass-btn {
+          @apply bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-all duration-200 border border-white/10 active:scale-95;
+        }
+        .glass-input {
+          @apply bg-black/20 border border-white/10 text-white placeholder-white/40 focus:outline-none focus:border-brand-500 transition-colors rounded-lg px-4 py-2;
+        }
+      }
+      body {
+        @apply bg-slate-900 text-slate-50 overflow-x-hidden;
+        background: radial-gradient(circle at top left, #1e1b4b, #0f172a);
+        min-height: 100vh;
+      }
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        @apply bg-transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        @apply bg-white/20 rounded-full hover:bg-white/30;
+      }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
