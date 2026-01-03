@@ -33,7 +33,7 @@ export interface ExportSettings {
 // --- Generator Types ---
 
 export type LayerType = 'text' | 'image' | 'shape' | 'emoji';
-export type ShapeType = 'rect' | 'circle' | 'star' | 'triangle' | 'pentagon' | 'hexagon' | 'octagon' | 'custom';
+export type ShapeType = 'rect' | 'circle' | 'star' | 'triangle' | 'pentagon' | 'hexagon' | 'octagon' | 'custom' | 'line';
 export type ImageFillMode = 'cover' | 'contain' | 'stretch' | 'custom';
 export type FillType = 'solid' | 'gradient' | 'image' | 'none';
 

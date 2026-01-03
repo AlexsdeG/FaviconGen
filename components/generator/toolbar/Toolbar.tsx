@@ -110,7 +110,14 @@ const Toolbar: React.FC<ToolbarProps> = ({ onExport }) => {
     };
 
     const handleAddShape = (type: ShapeType) => {
-        const size = 300;
+        const isLine = type === 'line';
+        const w = isLine ? 300 : 300;
+        const h = isLine ? 20 : 300;
+
+        // Rect and Line (Rect-based) draw from top-left, so we offset them by w/2 to center anchor.
+        // Circle, Star, and Polygons draw from center, so offset should be 0.
+        const isTopLeftOrigin = type === 'rect' || type === 'line' || type === 'custom'; // Custom paths usually 0,0 based
+
         addLayer({
             id: generateId(),
             type: 'shape',
@@ -124,15 +131,15 @@ const Toolbar: React.FC<ToolbarProps> = ({ onExport }) => {
             locked: false,
             x: spawnX,
             y: spawnY,
-            offsetX: size / 2,
-            offsetY: size / 2,
+            offsetX: w / 2,
+            offsetY: h / 2,
             rotation: 0,
             scaleX: 1,
             scaleY: 1,
             opacity: 1,
-            width: size,
-            height: size,
-            cornerRadius: type === 'rect' ? 40 : 0
+            width: w,
+            height: h,
+            cornerRadius: type === 'rect' ? 40 : (isLine ? 10 : 0)
         });
         setShowShapeMenu(false);
     };
@@ -368,6 +375,7 @@ const Toolbar: React.FC<ToolbarProps> = ({ onExport }) => {
                             <div className="grid grid-cols-3 gap-1">
                                 <ShapeItem type="rect" icon={Square} label="Rect" />
                                 <ShapeItem type="circle" icon={Circle} label="Circle" />
+                                <ShapeItem type="line" icon={Minus} label="Line" />
                                 <ShapeItem type="triangle" icon={Triangle} label="Triangle" />
                                 <ShapeItem type="star" icon={Star} label="Star" />
                                 <ShapeItem type="pentagon" icon={Hexagon} label="Pentagon" />
