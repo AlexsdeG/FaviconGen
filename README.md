@@ -2,6 +2,8 @@
 
 A privacy-focused, zero-backend tool for creating production-ready favicon packages. Whether you need to quickly convert an existing logo or design a new icon from scratch in a professional editor, FaviconGen handles it all purely in your browser.
 
+![App Screenshot](https://github.com/AlexsdeG/FaviconGen/blob/main/FaviconGen.png)
+
 ---
 
 ## ✨ Features
