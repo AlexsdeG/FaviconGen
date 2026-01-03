@@ -18,7 +18,7 @@ const Header: React.FC = () => {
             Favicon<span className="text-brand-500">Gen</span>
           </h1>
         </div>
-        
+
         {/* Central Navigation Tabs */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <div className="bg-white/5 border border-white/10 p-1 rounded-lg flex gap-1">
@@ -26,8 +26,8 @@ const Header: React.FC = () => {
               onClick={() => setMode('converter')}
               className={cn(
                 "px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 flex items-center gap-2 focus:outline-none",
-                mode === 'converter' 
-                  ? "bg-brand-600 text-white shadow-lg" 
+                mode === 'converter'
+                  ? "bg-brand-600 text-white shadow-lg"
                   : "text-slate-400 hover:text-white hover:bg-white/5"
               )}
             >
@@ -38,8 +38,8 @@ const Header: React.FC = () => {
               onClick={() => setMode('generator')}
               className={cn(
                 "px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 flex items-center gap-2 focus:outline-none",
-                mode === 'generator' 
-                  ? "bg-brand-600 text-white shadow-lg" 
+                mode === 'generator'
+                  ? "bg-brand-600 text-white shadow-lg"
                   : "text-slate-400 hover:text-white hover:bg-white/5"
               )}
             >
@@ -51,9 +51,9 @@ const Header: React.FC = () => {
 
         {/* Right Actions */}
         <div className="flex items-center gap-4">
-          <a 
-            href="https://github.com" 
-            target="_blank" 
+          <a
+            href="https://github.com/AlexsdeG/FaviconGen"
+            target="_blank"
             rel="noreferrer"
             className="p-2 hover:bg-white/10 rounded-full transition-colors focus:outline-none focus:bg-white/10"
           >
