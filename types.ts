@@ -22,12 +22,12 @@ export interface ConverterState {
 export type PackageType = 'essential' | 'complete';
 
 export interface ExportSettings {
-    packageType: PackageType;
-    includeSvg: boolean; // For Generator mainly
-    appName: string;
-    appShortName: string;
-    themeColor?: string;
-    backgroundColor?: string;
+  packageType: PackageType;
+  includeSvg: boolean; // For Generator mainly
+  appName: string;
+  appShortName: string;
+  themeColor?: string;
+  backgroundColor?: string;
 }
 
 // --- Generator Types ---
@@ -72,29 +72,29 @@ export interface BaseLayer {
 }
 
 export interface SnappingOptions {
-    enabled: boolean;
-    grid: boolean;
-    gridSize: number;
-    objects: boolean;
-    canvas: boolean; // edge and center
-    rotation: boolean;
-    rotationIncrement: number;
-    threshold: number;
+  enabled: boolean;
+  grid: boolean;
+  gridSize: number;
+  objects: boolean;
+  canvas: boolean; // edge and center
+  rotation: boolean;
+  rotationIncrement: number;
+  threshold: number;
 }
 
 export interface ShapeLayer extends BaseLayer {
   type: 'shape';
   shapeType: ShapeType;
-  
+
   // Fill Configuration
   fillType: FillType;
   fill: string; // Solid color
   gradient?: GradientConfig; // Gradient config
-  
+
   stroke: string;
   strokeWidth: number;
   cornerRadius?: number;
-  
+
   // Custom Shape Props
   pathData?: string;
   viewBox?: string;
@@ -125,7 +125,7 @@ export interface TextLayer extends BaseLayer {
   fillPatternScale?: number;
   fillPatternX?: number;
   fillPatternY?: number;
-  
+
   stroke?: string;
   strokeWidth?: number;
   cornerRadius?: number; // Added for consistency, though usually applies to background box if implemented
@@ -151,7 +151,7 @@ export interface CanvasConfig {
   background: string; // Solid Color
   backgroundGradient?: GradientConfig;
   cornerRadius?: number; // Added for canvas border radius
-  
+
   // Canvas Image Properties
   backgroundImage?: string; // Base64
   backgroundImageMode?: ImageFillMode;
@@ -170,7 +170,9 @@ export interface EditorState {
     y: number;
   };
   snapping: SnappingOptions;
-  
+  isFreeScale: boolean;
+  toggleFreeScale: () => void;
+
   // History
   history: { layers: Layer[], canvasConfig: CanvasConfig }[];
   historyIndex: number;
@@ -187,7 +189,7 @@ export interface EditorState {
   setSnappingOptions: (options: Partial<SnappingOptions>) => void;
   deselectAll: () => void;
   centerSelection: () => void;
-  
+
   // Undo/Redo
   undo: () => void;
   redo: () => void;
