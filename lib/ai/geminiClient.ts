@@ -33,7 +33,7 @@ export const suggestGradient = async (context: string): Promise<GradientConfig |
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const text = response.text();
-    
+
     // Clean up potential markdown formatting in response
     const jsonStr = text.replace(/```json/g, '').replace(/```/g, '').trim();
     const data = JSON.parse(jsonStr);
@@ -55,12 +55,18 @@ export const suggestGradient = async (context: string): Promise<GradientConfig |
 /**
  * Generates an icon shape (SVG path) based on a prompt
  */
-export const generateIconShape = async (userPrompt: string): Promise<{ path: string, viewBox: string } | null> => {
+export const generateIconShape = async (userPrompt: string, imageContext?: string): Promise<{ path: string, viewBox: string } | null> => {
   if (!genAI) return null;
 
   try {
     const model = genAI.getGenerativeModel({ model: MODEL_NAME });
-    const prompt = `Generate a simple, flat, single-path SVG icon for: "${userPrompt}".
+    let finalPrompt = `Generate a simple, flat, single-path SVG icon for: "${userPrompt}".`;
+    if (imageContext) {
+      finalPrompt += ` Use the provided image context as inspiration.`;
+    }
+
+    const prompt = `${finalPrompt}
+    Return ONLY a JSON object with this shape:
     Return ONLY a JSON object with this shape:
     { "path": "svg path string", "viewBox": "0 0 24 24" }
     The path should be simple and valid. Do not include <svg> tags.`;
