@@ -43,6 +43,16 @@ Generates a standard `.zip` package containing:
 - `icon.svg` (Scalable vector source)
 - `site.webmanifest` (JSON configuration)
 
+### ⌨️ Keyboard Shortcuts
+
+| Action | Shortcuts |
+| :--- | :--- |
+| **Move Element** | `Arrow Keys` |
+| **Move Faster** | `Shift` + `Arrow Keys` |
+| **Delete Element** | `Del` / `Entf` / `Backspace` |
+| **Undo** | `Ctrl` + `Z` |
+| **Redo** | `Ctrl` + `Y` _or_ `Ctrl` + `Shift` + `Z` |
+
 ---
 
 ## 🚀 Getting Started
