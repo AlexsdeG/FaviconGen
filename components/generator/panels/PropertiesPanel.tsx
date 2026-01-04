@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import FontPicker from './FontPicker';
 import { useEditorStore } from '../../../store/editorStore';
 import { HexColorPicker } from 'react-colorful';
 import { cn, readFileAsBase64 } from '../../../lib/utils';
@@ -319,7 +320,7 @@ const PropertiesPanel: React.FC = () => {
     const selectedLayer = layers.find(l => l.id === selectedLayerId);
     const [activeTab, setActiveTab] = React.useState<'style' | 'transform'>('style');
     const [aspectLocked, setAspectLocked] = React.useState(true);
-    const [fonts, setFonts] = React.useState<string[]>(INITIAL_FONTS);
+    const [customFonts, setCustomFonts] = React.useState<string[]>([]);
     const fontInputRef = useRef<HTMLInputElement>(null);
 
     const handleFontUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -332,7 +333,7 @@ const PropertiesPanel: React.FC = () => {
             const fontFace = new FontFace(fontName, buffer);
             await fontFace.load();
             document.fonts.add(fontFace);
-            setFonts(prev => [...prev, fontName]);
+            setCustomFonts(prev => [...prev, fontName]);
 
             if (selectedLayerId && selectedLayer?.type === 'text') {
                 updateLayer(selectedLayerId, { fontFamily: fontName }, true);
@@ -530,13 +531,13 @@ const PropertiesPanel: React.FC = () => {
                                             onChange={handleFontUpload}
                                         />
                                     </div>
-                                    <select
-                                        value={selectedLayer.fontFamily}
-                                        onChange={(e) => updateLayer(selectedLayer.id, { fontFamily: e.target.value }, true)}
-                                        className="w-full bg-black/20 border border-white/10 rounded-lg p-2 text-sm text-white outline-none"
-                                    >
-                                        {fonts.map(f => <option key={f} value={f}>{f}</option>)}
-                                    </select>
+
+                                    <FontPicker
+                                        currentFont={selectedLayer.fontFamily}
+                                        onChange={(font) => updateLayer(selectedLayer.id, { fontFamily: font }, true)}
+                                        customFonts={customFonts}
+                                        defaultFonts={INITIAL_FONTS}
+                                    />
                                 </div>
 
                                 <div className="flex gap-2">
